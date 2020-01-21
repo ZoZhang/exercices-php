@@ -84,10 +84,9 @@ class Media extends Post
     {
         $response = ['error' => true, 'message' => ''];
         $target_dir =  ROOT_DIR . self::IMAGE_DIR ;
-        $target_name = basename($file);
-        $target_file = $target_dir . $target_name;
+        $target_file = $target_dir . $file;
 
-        if (file_exists($target_file)) {
+        if (is_file($target_file) && file_exists($target_file)) {
             unlink($target_file);
         }
         return $response;
