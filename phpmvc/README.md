@@ -4,7 +4,7 @@ Un exercice de Blog basique en PHP avec une architecture MVC simplififée
 
 ### Liens
 - [Frontend Demo](http://phpmvc.zhangzhao.fr)
-- [Backend Demo](http://phpmvc.zhangzhao.fr/?type=admin&action=articles)
+- [Backend Demo](http://phpmvc.zhangzhao.fr/?type=admin&action=articles)  - username: admin | password: admin
 - [Code Source](https://github.com/ZoZhang/exercices-php/tree/master/phpmvc)
 
 ### Avancement
