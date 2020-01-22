@@ -8,8 +8,8 @@ class MediaRepository extends Repository
 {
     function create($post_id1, $data = [])
     {
-        $sql = 'INSERT INTO `posts` (`post_author`, `post_date`, `post_title`, `post_status`, `post_name`, `post_type`) VALUES';
-        $sql .= sprintf('(\'%s\',\'%s\',\'%s\',\'%s\',\'%s\',\'%s\')', $data['post_author'], $data['post_date'], $data['post_title'], $data['post_status'], $data['post_name'], $data['post_type']);
+        $sql = 'INSERT INTO `posts` (`post_author`,`post_content`,`post_date`, `post_title`, `post_status`, `post_name`, `post_type`) VALUES';
+        $sql .= sprintf('(\'%s\',\'%s\',\'%s\',\'%s\',\'%s\',\'%s\',\'%s\')', $data['post_author'],'&nbsp;', $data['post_date'], $data['post_title'], $data['post_status'], $data['post_name'], $data['post_type']);
 
         $statement = $this->db->prepare($sql);
 

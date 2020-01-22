@@ -192,6 +192,14 @@ Class Frontend {
 
             if($nom && $email && $message){
 
+                if (!get_magic_quotes_gpc()){
+                    foreach ($data as &$val) {
+                        if (is_string($val)) {
+                            $val = addslashes($val);
+                        }
+                    }
+                }
+
                 $contact_repository = new \Application\Models\ContactRepository();
                 $contact_donne = $contact_repository->create($data);
 
@@ -261,8 +269,8 @@ Class Frontend {
                 $page_infos = explode('?', $_SERVER['HTTP_REFERER']);
                 $page_infos = end($page_infos);
                 parse_str($page_infos, $page_args);
-
-                if ('newsletter' != $page_args['action'] && is_callable([$this, $page_args['action']])) {
+ 
+                if (isset($page_args['action']) && 'newsletter' != $page_args['action'] && is_callable([$this, $page_args['action']])) {
                     $newArg = http_build_query($response);
                     $redirct_url = $_SERVER['HTTP_REFERER'] . '&' . $newArg;
 
@@ -316,6 +324,14 @@ Class Frontend {
             }
 
             if($nom && $email && $content){
+
+                if (!get_magic_quotes_gpc()){
+                    foreach ($data as &$val) {
+                        if (is_string($val)) {
+                            $val = addslashes($val);
+                        }
+                    }
+                }
 
                 $contact_repository = new \Application\Models\CommentsRepository();
                 $contact_donne = $contact_repository->create($data);

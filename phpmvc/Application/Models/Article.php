@@ -43,20 +43,20 @@ class Article extends Post
                 }
             }
 
-            // mettre media information
-            if ('id' == $key) {
-                $media_repository = new \Application\Models\MediaRepository();
-                $donnee_media = $media_repository->read($val);
-
-                if ($donnee_media) {
-                    $media_model = new \Application\Models\Media($donnee_media);
-                    $this->alt = $media_model->alt();
-                    $this->media = $media_model->media();
-                }
-            }
-
             $this->$newKey = $val;
         }
+
+        // mettre media information
+        $this->alt = '';
+        $this->media = '';
+        $media_repository = new \Application\Models\MediaRepository();
+        $donnee_media = $media_repository->read($this->id());
+
+        if ($donnee_media) {
+            $media_model = new \Application\Models\Media($donnee_media);
+            $this->alt = $media_model->alt();
+            $this->media = $media_model->media();
+        } 
 
         // commentaires
         $this->comments = [];
