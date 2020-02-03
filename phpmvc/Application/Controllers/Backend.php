@@ -106,6 +106,7 @@ Class Backend {
 
                 case 'delete':
 
+                    $method = null;
                     $ids = isset($_POST['selected']) && $_POST['selected'] ? $_POST['selected'] : null;
 
                     if (!$ids && !$id) {
@@ -138,7 +139,6 @@ Class Backend {
                             $is_article_delete = $article_repository->delete($delete_ids);
 
                             if (false !== $is_article_delete) {
-                                $method = null;
                                 $response['error'] = false;
                                 $response['message'][] =  'Article supprimé avec succès';
                             } else {
